@@ -33,7 +33,7 @@ export default function Landing() {
           <DaySelect month="8" year="2023" />
         </div>
         <div>
-          <ImportantItems />
+          <ImportantItems date="2023-08-30" />
         </div>
       </div>
       <Tooltip title="Logout">
