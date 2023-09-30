@@ -1,6 +1,7 @@
 "use client";
 
 import DaySelect from "@/src/components/DaySelect";
+import { ImportantItems } from "@/src/components/ImportantItems";
 import YearSelect from "@/src/components/YearSelect";
 import { LogoutOutlined } from "@ant-design/icons";
 import { FloatButton, Tooltip } from "antd";
@@ -25,13 +26,15 @@ export default function Landing() {
               "Nov",
               "Dec",
             ]}
-            active="Sep"
+            active="Aug"
           />
         </div>
         <div>
-          <DaySelect month="Sep" year="2023" />
+          <DaySelect month="8" year="2023" />
         </div>
-        <div>Important Items</div>
+        <div>
+          <ImportantItems />
+        </div>
       </div>
       <Tooltip title="Logout">
         <FloatButton

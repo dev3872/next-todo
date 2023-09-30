@@ -14,9 +14,11 @@
     "@react-spring/web": "^9.7.3",
     "animejs": "^3.2.1",
     "antd": "^5.9.4",
+    "dayjs": "^1.11.10",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "sass": "^1.68.0"
   },
   "devDependencies": {
     "@types/node": "latest",
