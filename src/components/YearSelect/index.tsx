@@ -9,13 +9,13 @@ export default function YearSelect({
 }: {
   items: Array<string>;
   active: string;
-  setDate: (num: string) => void;
+  setDate: (num: string, arr: "day" | "year" | "month") => void;
 }) {
   return (
     <div className="w-max h-max flex flex-col justify-center items-center">
       {items.map((item, index) => (
         <div
-          onClick={() => setDate((index + 1).toString())}
+          onClick={() => setDate((index + 1).toString(), "month")}
           className={`w-32 h-10 text-xl text-white rounded-md relative ${
             item === active ? "bg-blue-800" : ""
           }`}

@@ -14,12 +14,11 @@ export default function Landing() {
     month: dayjs().format("MM"),
     year: dayjs().format("YYYY"),
   });
-  const updateMonth = (month: string) => {
-    console.log(month);
+  const updateDate = (value: string, attr: "month" | "year" | "day") => {
     setDate((prevDate) => {
       return {
         ...prevDate,
-        month: month,
+        [attr]: value,
       };
     });
   };
@@ -44,11 +43,16 @@ export default function Landing() {
           <YearSelect
             items={months}
             active={months.at(parseInt(date.month) - 1) || "Jan"}
-            setDate={updateMonth}
+            setDate={updateDate}
           />
         </div>
         <div>
-          <DaySelect month={date.month} year={date.year} />
+          <DaySelect
+            month={date.month}
+            year={date.year}
+            setDate={updateDate}
+            date={date}
+          />
         </div>
         <div>
           <ImportantItems date={`${date.year}-${date.month}-${date.day}`} />

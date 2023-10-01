@@ -3,7 +3,8 @@
 import { Table } from "antd";
 import dayjs from "dayjs";
 import "./style.scss";
-import { FileAddFilled, PlusCircleTwoTone } from "@ant-design/icons";
+import { PlusCircleTwoTone } from "@ant-design/icons";
+import { ColumnProps, ColumnType } from "antd/es/table";
 interface dayType {
   0: number | null;
   1: number | null;
@@ -16,9 +17,13 @@ interface dayType {
 export default function DaySelect({
   month,
   year,
+  setDate,
+  date,
 }: {
   month: string;
   year: string;
+  setDate: (num: string, arr: "day" | "year" | "month") => void;
+  date: { day: string; month: string; year: string };
 }) {
   const createMonthDataSource = () => {
     const count = dayjs(`${year}-${month}-01`).daysInMonth();
@@ -61,9 +66,25 @@ export default function DaySelect({
     key: col.dataIndex,
     width: 110,
     bordered: true,
+    onCell: (record: dayType, rowIndex: any) => {
+      return {
+        className:
+          record[index as keyof dayType] === parseInt(date.day)
+            ? "selected-cell"
+            : "unselected-cell",
+      };
+    },
+    onHeaderCell: (columns: ColumnType<dayType>) => {
+      return {
+        className: "header-cell",
+      };
+    },
     render: (value: number, record: dayType) => {
       return (
-        <div style={{ height: "70px" }}>
+        <div
+          onClick={() => setDate(value.toString(), "day")}
+          style={{ height: "70px", cursor: "pointer" }}
+        >
           <p style={{ color: "blue", fontWeight: 500, fontSize: "20px" }}>
             {value}
           </p>

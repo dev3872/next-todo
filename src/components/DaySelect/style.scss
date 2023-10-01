@@ -6,3 +6,18 @@
 .ant-table-thead{
     height: 40px!important;
 }
+.selected-cell{
+    border: 3px solid red !important;
+    border-radius: 15px !important;
+    background-color: #f1f1f1 !important;
+}
+.unselected-cell{
+    border: 1px solid #ddd !important;
+    border-radius: 15px !important;
+}
+.header-cell{
+    border-top: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+    border-left: none !important;
+    border-right: none !important;
+}
