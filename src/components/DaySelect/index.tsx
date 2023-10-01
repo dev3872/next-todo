@@ -59,7 +59,7 @@ export default function DaySelect({
   const columnsSource = columns.map((col, index) => ({
     ...col,
     key: col.dataIndex,
-    width: 100,
+    width: 110,
     bordered: true,
     render: (value: number, record: dayType) => {
       return (
@@ -120,8 +120,9 @@ export default function DaySelect({
         </span>
       </div>
 
-      <div className="w-max">
+      <div className="w-96" style={{ width: "800px" }}>
         <Table
+          scroll={{ x: 400, y: 520 }}
           pagination={false}
           dataSource={createMonthDataSource()}
           columns={columnsSource}

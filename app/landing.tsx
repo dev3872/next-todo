@@ -5,35 +5,53 @@ import { ImportantItems } from "@/src/components/ImportantItems";
 import YearSelect from "@/src/components/YearSelect";
 import { LogoutOutlined } from "@ant-design/icons";
 import { FloatButton, Tooltip } from "antd";
+import dayjs from "dayjs";
+import { useState } from "react";
 
 export default function Landing() {
+  const [date, setDate] = useState({
+    day: dayjs().format("DD"),
+    month: dayjs().format("MM"),
+    year: dayjs().format("YYYY"),
+  });
+  const updateMonth = (month: string) => {
+    console.log(month);
+    setDate((prevDate) => {
+      return {
+        ...prevDate,
+        month: month,
+      };
+    });
+  };
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   return (
     <div className="flex w-screen h-screen justify-center content-center">
       <div className="flex justify-center items-center w-full h-full bg-slate-600">
-        <div className="bg-gradient-to-b from-blue-400 to-blue-800 rounded-l-lg">
+        <div className="bg-gradient-to-b from-blue-400 to-blue-800 rounded-l-lg h-max">
           <YearSelect
-            items={[
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ]}
-            active="Aug"
+            items={months}
+            active={months.at(parseInt(date.month) - 1) || "Jan"}
+            setDate={updateMonth}
           />
         </div>
         <div>
-          <DaySelect month="8" year="2023" />
+          <DaySelect month={date.month} year={date.year} />
         </div>
         <div>
-          <ImportantItems date="2023-08-30" />
+          <ImportantItems date={`${date.year}-${date.month}-${date.day}`} />
         </div>
       </div>
       <Tooltip title="Logout">

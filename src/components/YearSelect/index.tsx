@@ -1,16 +1,21 @@
 "use client";
 
+import React from "react";
+
 export default function YearSelect({
   items,
   active,
+  setDate,
 }: {
   items: Array<string>;
   active: string;
+  setDate: (num: string) => void;
 }) {
   return (
     <div className="w-max h-max flex flex-col justify-center items-center">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
+          onClick={() => setDate((index + 1).toString())}
           className={`w-32 h-10 text-xl text-white rounded-md relative ${
             item === active ? "bg-blue-800" : ""
           }`}
